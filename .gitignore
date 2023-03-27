@@ -1,5 +1,8 @@
-*/.gitignore
 .git/
 *.zip
 *.tar
 *.gz
+*.idea/
+*.DS_store
+*.DS_STORE
+
