@@ -3,6 +3,5 @@
 *.tar
 *.gz
 *.idea/
-*.DS_store
-*.DS_STORE
+*.DS_Store
 
