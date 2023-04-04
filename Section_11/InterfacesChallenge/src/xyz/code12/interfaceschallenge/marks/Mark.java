@@ -3,18 +3,26 @@ package xyz.code12.interfaceschallenge.marks;
 import xyz.code12.interfaceschallenge.Mapable;
 
 public abstract class Mark implements Mapable {
-    public GeometryType type;
-    public String label;
-    public String marker;
+    private String type;
+    private String label;
+    private String marker;
+    private String name;
+    private String json;
 
-    public Mark(GeometryType type, String label, String marker) {
+    public Mark(String type, String label, String marker, String name) {
         this.type = type;
         this.label = label;
         this.marker = marker;
+        this.name = name;
+
+        json = "\"type\": \"" + getType() + "\"" +
+                ", \"label\": \"" + getLabel() + "\"" +
+                ", \"marker\": \"" + getMarker() + "\"" +
+                ", \"name\": \"" + getName() + "\"";
     }
 
     @Override
-    public GeometryType getType() {
+    public String getType() {
         return this.type;
     }
 
@@ -26,5 +34,18 @@ public abstract class Mark implements Mapable {
     @Override
     public String getMarker() {
         return this.marker;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void addJson(String json) {
+        this.json += json;
+    }
+
+    @Override
+    public String toJSON() {
+        return String.format(Mapable.JSON_PROPERTY, this.json);
     }
 }
